@@ -1,125 +1,57 @@
-import { FC } from "react";
-import { Icon } from "./Icon/Icon";
+export const dashboard = <i className="fa-solid fa-chart-line"></i>;
 
-export interface IconProps {
-  onClick?: () => void;
-  $size?: string;
-  $margin?: string;
-  $disabled?: boolean;
-}
+export const transactions = <i className="fa-solid fa-credit-card"></i>;
 
-export const DashboardIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-chart-line" {...props} />
-);
+export const categories = <i className="fa-solid fa-tags"></i>;
 
-export const TransactionsIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-credit-card" {...props} />
-);
+export const accounts = <i className="fa-solid fa-wallet"></i>;
 
-export const CategoriesIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-tags" {...props} />
-);
+export const settings = <i className="fa-solid fa-cog"></i>;
 
-export const AccountsIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-wallet" {...props} />
-);
+export const logout = <i className="fa-solid fa-sign-out"></i>;
 
-export const SettingsIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-cog" {...props} />
-);
+export const trend = <i className="fa-solid fa-money-bill-trend-up"></i>;
 
-export const LogoutIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-sign-out" {...props} />
-);
+export const expenses = <i className="fa-solid fa-money-bill-transfer"></i>;
 
-export const TrendIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-money-bill-trend-up" {...props} />
-);
+export const money = <i className="fa-solid fa-money-bill"></i>;
 
-export const ExpensesIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-money-bill-transfer" {...props} />
-);
+export const freelance = <i className="fa-solid fa-earth-americas"></i>;
 
-export const MoneyIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-money-bill" {...props} />
-);
+export const stocks = <i className="fa-solid fa-arrow-trend-up"></i>;
 
-export const FreelanceIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-earth-americas" {...props} />
-);
+export const bitcoin = <i className="fa-brands fa-bitcoin"></i>;
 
-export const StocksIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-arrow-trend-up" {...props} />
-);
+export const piggy = <i className="fa-solid fa-piggy-bank"></i>;
 
-export const BitcoinIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-brands fa-bitcoin" {...props} />
-);
+export const yt = <i className="fa-brands fa-youtube"></i>;
 
-export const PiggyIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-piggy-bank" {...props} />
-);
+export const card = <i className="fa-brands fa-cc-visa"></i>;
 
-export const YtIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-brands fa-youtube" {...props} />
-);
+export const users = <i className="fa-solid fa-users-between-lines"></i>;
 
-export const CardIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-brands fa-cc-visa" {...props} />
-);
+export const ruble = <i className="fa-solid fa-ruble-sign"></i>;
 
-export const UsersIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-users-between-lines" {...props} />
-);
+export const calendar = <i className="fa-solid fa-calendar"></i>;
 
-export const DollarIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-dollar-sign" {...props} />
-);
+export const comment = <i className="fa-solid fa-comment"></i>;
 
-export const CalendarIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-calendar" {...props} />
-);
+export const plus = <i className="fa-solid fa-plus"></i>;
 
-export const CommentIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-comment" {...props} />
-);
+export const trash = <i className="fa-solid fa-trash"></i>;
 
-export const PlusIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-plus" {...props} />
-);
+export const signout = <i className="fa-solid fa-right-from-bracket"></i>;
 
-export const TrashIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-trash" {...props} />
-);
+export const takeaway = <i className="fa-solid fa-utensils"></i>;
 
-export const SignoutIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-right-from-bracket" {...props} />
-);
+export const clothing = <i className="fa-solid fa-shirt"></i>;
 
-export const TakeawayIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-utensils" {...props} />
-);
+export const book = <i className="fa-solid fa-book-open"></i>;
 
-export const ClothingIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-shirt" {...props} />
-);
+export const food = <i className="fa-solid fa-bowl-food"></i>;
 
-export const BookIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-book-open" {...props} />
-);
+export const medical = <i className="fa-solid fa-briefcase-medical"></i>;
 
-export const FoodIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-bowl-food" {...props} />
-);
+export const tv = <i className="fa-solid fa-tv"></i>;
 
-export const MedicalIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-briefcase-medical" {...props} />
-);
-
-export const TvIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-tv" {...props} />
-);
-
-export const CircleIcon: FC<IconProps> = ({ ...props }) => (
-  <Icon icon="fa-solid fa-circle-dot" {...props} />
-);
+export const circle = <i className="fa-solid fa-circle-dot"></i>;

@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { Income, IncomeAction, IncomeActionTypes } from "../../types";
 import { IncomeService } from "../../services";
 
-export const fetchIncomes = () => {
+export const getIncomes = () => {
   return async (dispatch: Dispatch<IncomeAction>) => {
     try {
       dispatch({ type: IncomeActionTypes.FETCH_INCOMES });

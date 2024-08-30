@@ -1,7 +1,6 @@
 import { FC } from "react";
 import avatar from "../../../../assets/avatar.png";
 import styled from "styled-components";
-import { SignOut } from "../SignOut/SignOut";
 
 export const MenuUser: FC = () => {
   return (

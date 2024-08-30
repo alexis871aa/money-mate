@@ -1,19 +1,13 @@
-import { FC } from "react";
-import {
-  DashboardIcon,
-  ExpensesIcon,
-  IconProps,
-  TransactionsIcon,
-  TrendIcon,
-} from "../../../../ui";
+import { FC, ReactNode } from "react";
 import { useActions, useTypedSelector } from "../../../../hooks";
 import { selectApp } from "../../../../store/selectors";
+import { dashboard, expenses, transactions, trend } from "../../../../ui";
 import styled from "styled-components";
 
 interface MenuItems {
   id: number;
   title: string;
-  icon: FC<IconProps>;
+  icon: ReactNode;
   link: string;
 }
 
@@ -21,25 +15,25 @@ export const menuItems: MenuItems[] = [
   {
     id: 1,
     title: "Статистика",
-    icon: DashboardIcon,
+    icon: dashboard,
     link: "/dashboard",
   },
   {
     id: 2,
     title: "Операции",
-    icon: TransactionsIcon,
+    icon: transactions,
     link: "/transactions",
   },
   {
     id: 3,
     title: "Доходы",
-    icon: TrendIcon,
+    icon: trend,
     link: "/incomes",
   },
   {
     id: 4,
     title: "Расходы",
-    icon: ExpensesIcon,
+    icon: expenses,
     link: "/expenses",
   },
 ];
@@ -51,14 +45,13 @@ export const MenuItems: FC = () => {
   return (
     <MenuItemsStyled>
       {menuItems.map((item) => {
-        const IconComponent = item.icon;
         return (
           <li
             key={item.id}
             onClick={() => setActive(item.id)}
             className={active === item.id ? "active" : ""}
           >
-            <IconComponent />
+            {item.icon}
             <span>{item.title}</span>
           </li>
         );

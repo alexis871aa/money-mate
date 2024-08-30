@@ -1,12 +1,12 @@
 import { FC } from "react";
+import { signout } from "../../../../ui";
 import styled from "styled-components";
-import { SignoutIcon } from "../../../../ui";
 
 export const SignOut: FC = () => {
   return (
     <SignOutStyled>
       <li>
-        <SignoutIcon />
+        {signout}
         <span>Выйти</span>
       </li>
     </SignOutStyled>
