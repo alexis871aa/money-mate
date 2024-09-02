@@ -33,3 +33,17 @@ export const addIncome = (income: Income) => {
     }
   };
 };
+
+export const deleteIncome = (id: string | undefined) => {
+  return async (dispatch: Dispatch<IncomeAction>) => {
+    try {
+      await IncomeService.deleteIncome(id);
+      dispatch({
+        type: IncomeActionTypes.DELETE_INCOME,
+        payload: id,
+      });
+    } catch (e: any) {
+      console.log(e.response?.data?.message);
+    }
+  };
+};

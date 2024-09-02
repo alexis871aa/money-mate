@@ -1,5 +1,4 @@
 const Income = require("../models/Income");
-const moment = require("moment");
 const mapIncome = require("../helpers/mapIncome");
 
 async function getIncomes() {

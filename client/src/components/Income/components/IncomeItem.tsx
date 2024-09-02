@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import {
   bitcoin,
   book,
@@ -21,17 +21,18 @@ import {
   users,
   yt,
 } from "../../../ui";
+import moment from "moment";
 import styled from "styled-components";
 
 interface IncomeItemProps {
-  id: string;
+  id: string | undefined;
   title: string;
-  amount: number;
+  amount: number | "";
   category: string;
   description: string;
-  date: Date;
-  deleteItem: ReactNode;
-  type: string;
+  date: Date | null;
+  deleteItem: (id: string | undefined) => void; // что сюда вписать
+  type?: string;
   $indicatorColor: string;
 }
 
@@ -94,7 +95,9 @@ export const IncomeItem: FC<IncomeItemProps> = ({
 
   return (
     <IncomeItemStyled $indicator={$indicatorColor}>
-      <div className="icon"></div>
+      <div className="icon">
+        {type === "expense" ? expenseCatIcon() : categoryIcon()}
+      </div>
       <div className="content">
         <h5>{title}</h5>
         <div className="inner-content">
@@ -103,22 +106,25 @@ export const IncomeItem: FC<IncomeItemProps> = ({
               {ruble} {amount}
             </p>
             <p>
-              {calendar} {date.toLocaleDateString()}
+              {calendar} {moment(date).format("DD.MM.YYYY")}
             </p>
             <p>
-              {comment} {description}
+              {comment}
+              {description}
             </p>
           </div>
-          <div className="btn-container">
+          <div className="btn-con">
             <Button
               icon={trash}
-              $bPad="1rem"
-              $bRad="50px"
-              $bg="var(--primary-color)"
-              $color="#fff"
+              $bPad={"1rem"}
+              $bRad={"50%"}
+              $bg={"var(--primary-color)"}
+              $color={"#fff"}
               $iColor={"#fff"}
               $hColor={"var(--color-green)"}
-              onClick={() => {}}
+              onClick={() => {
+                deleteItem(id);
+              }}
             />
           </div>
         </div>
@@ -133,7 +139,7 @@ interface IncomeItemStyledProps {
 
 const IncomeItemStyled = styled.div<IncomeItemStyledProps>`
   background: #fcf6f9;
-  border: 2px solid #fff;
+  border: 2px solid #ffffff;
   box-shadow: 0 1px 15px rgba(0, 0, 0, 0.06);
   border-radius: 20px;
   padding: 1rem;
@@ -152,7 +158,8 @@ const IncomeItemStyled = styled.div<IncomeItemStyledProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #fff;
+    border: 2px solid #ffffff;
+
     i {
       font-size: 2.6rem;
     }
@@ -162,7 +169,7 @@ const IncomeItemStyled = styled.div<IncomeItemStyledProps>`
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0.2rem;
 
     h5 {
       font-size: 1.3rem;

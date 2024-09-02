@@ -1,7 +1,7 @@
 export interface Income {
-  id?: string;
+  id?: string | undefined;
   title: string;
-  amount: number | "";
+  amount: number;
   category: string;
   description: string;
   date: Date | null;
@@ -28,7 +28,7 @@ interface AddIncomeAction {
 
 interface DeleteIncomeAction {
   type: IncomeActionTypes.DELETE_INCOME;
-  payload: string;
+  payload: string | undefined;
 }
 
 interface FetchIncomesAction {

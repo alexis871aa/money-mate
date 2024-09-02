@@ -17,4 +17,8 @@ export const IncomeService = {
 
     return $api.post<IncomeResponse>("/incomes/add-income", normalizedIncome);
   },
+
+  async deleteIncome(id: string | undefined): Promise<AxiosResponse<void>> {
+    return $api.delete(`/incomes/delete-income/${id}`);
+  },
 };

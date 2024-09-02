@@ -1,5 +1,5 @@
 export interface IncomeResponse {
-  id: string;
+  id: string | undefined;
   title: string;
   amount: number;
   category: string;

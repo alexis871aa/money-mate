@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useActions, useTypedSelector } from "../../hooks";
-import { Error, Loader } from "../../ui";
+import { Loader, StatusDisplay } from "../../ui";
 
 export const IncomeList: FC = () => {
   const { incomes, loading, error } = useTypedSelector((state) => state.income);
@@ -16,7 +16,7 @@ export const IncomeList: FC = () => {
   }
 
   if (error) {
-    return <Error errorMessage={error} />;
+    return <StatusDisplay type="error" message={error} />;
   }
 
   return (

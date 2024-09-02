@@ -42,6 +42,13 @@ export const Form: FC = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     addIncome(incomeDate);
+    setIncomeDate({
+      title: "",
+      amount: 0,
+      category: "",
+      description: "",
+      date: null,
+    });
   };
 
   return (
@@ -91,7 +98,7 @@ export const Form: FC = () => {
           </option>
           <option value="salary">Зарплата</option>
           <option value="freelancing">Подработка</option>
-          <option value="investiments">Инвестиции</option>
+          <option value="investments">Инвестиции</option>
           <option value="stocks">Акции</option>
           <option value="bitcoin">Биткойн</option>
           <option value="bank">Банковский перевод</option>
