@@ -4,6 +4,9 @@ export const initialState: IncomeState = {
   incomes: [],
   loading: false,
   error: null,
+  totalCount: 0,
+  currentPage: 1,
+  totalPages: 1,
 };
 
 export const incomeReducer = (
@@ -32,11 +35,15 @@ export const incomeReducer = (
       };
     }
     case IncomeActionTypes.FETCH_INCOMES_SUCCESS: {
+      const { incomes, totalCount, currentPage, totalPages } = action.payload;
       return {
         ...state,
         loading: false,
         error: null,
-        incomes: action.payload,
+        incomes,
+        totalCount,
+        currentPage,
+        totalPages,
       };
     }
     case IncomeActionTypes.FETCH_INCOMES_ERROR: {

@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { useWindowsSize } from "../../hooks";
+import { useWindowSize } from "../../hooks";
 import styled, { keyframes } from "styled-components";
 
 export const Orb: FC = () => {
-  const { width, height } = useWindowsSize();
+  const { width, height } = useWindowSize();
 
   return <OrbStyled width={width} height={height}></OrbStyled>;
 };
@@ -35,4 +35,6 @@ const OrbStyled = styled.div<OrbStyledProps>`
   filter: blur(400px);
   animation: ${({ width, height }) => moveOrb(width, height)} 15s alternate
     linear infinite;
+  pointer-events: none;
+  z-index: 0;
 `;

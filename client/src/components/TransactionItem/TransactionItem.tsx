@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { FC, ReactNode, useState } from "react";
+import moment from "moment";
 import {
   bitcoin,
   book,
@@ -14,29 +15,29 @@ import {
   money,
   piggy,
   ruble,
+  StatusDisplay,
   stocks,
   takeaway,
   trash,
   tv,
   users,
   yt,
-} from "../../../ui";
-import moment from "moment";
+} from "../../ui";
 import styled from "styled-components";
 
-interface IncomeItemProps {
-  id: string | undefined;
+interface TransactionItemProps {
+  id: string;
   title: string;
-  amount: number | "";
+  amount: number;
   category: string;
   description: string;
   date: Date | null;
-  deleteItem: (id: string | undefined) => void; // что сюда вписать
-  type?: string;
+  deleteItem: (id: string) => any;
+  type: "income" | "expense";
   $indicatorColor: string;
 }
 
-export const IncomeItem: FC<IncomeItemProps> = ({
+export const TransactionItem: FC<TransactionItemProps> = ({
   id,
   title,
   amount,
@@ -47,57 +48,52 @@ export const IncomeItem: FC<IncomeItemProps> = ({
   type,
   $indicatorColor,
 }) => {
-  const categoryIcon = () => {
-    switch (category) {
-      case "salary":
-        return money;
-      case "freelancing":
-        return freelance;
-      case "investments":
-        return stocks;
-      case "stocks":
-        return users;
-      case "bitcoin":
-        return bitcoin;
-      case "bank":
-        return card;
-      case "youtube":
-        return yt;
-      case "other":
-        return piggy;
-      default:
-        return "";
-    }
+  const [showStatus, setShowStatus] = useState(false);
+
+  const getCategoryIcon = () => {
+    const icons: Record<string, ReactNode> = {
+      salary: money,
+      freelancing: freelance,
+      investments: stocks,
+      stocks: users,
+      bitcoin: bitcoin,
+      bank: card,
+      youtube: yt,
+      other: piggy,
+      education: book,
+      groceries: food,
+      health: medical,
+      subscriptions: tv,
+      takeaways: takeaway,
+      clothing: clothing,
+      travelling: freelance,
+      default: circle,
+    };
+
+    return icons[category] || icons.default;
   };
 
-  const expenseCatIcon = () => {
-    switch (category) {
-      case "education":
-        return book;
-      case "groceries":
-        return food;
-      case "health":
-        return medical;
-      case "subscriptions":
-        return tv;
-      case "takeaways":
-        return takeaway;
-      case "clothing":
-        return clothing;
-      case "travelling":
-        return freelance;
-      case "other":
-        return circle;
-      default:
-        return "";
-    }
+  const handleDelete = async () => {
+    await deleteItem(id);
+    setShowStatus(true);
+    setTimeout(() => setShowStatus(false), 3000);
   };
+
+  const indicatorColor = type === "expense" ? "red" : $indicatorColor;
 
   return (
-    <IncomeItemStyled $indicator={$indicatorColor}>
-      <div className="icon">
-        {type === "expense" ? expenseCatIcon() : categoryIcon()}
-      </div>
+    <TransactionItemStyled $indicator={indicatorColor}>
+      {showStatus && (
+        <StatusDisplay
+          type="success"
+          message={
+            type === "expense"
+              ? `Расход успешно удален!`
+              : "Доход успешно удален!"
+          }
+        />
+      )}
+      <div className="icon">{getCategoryIcon()}</div>
       <div className="content">
         <h5>{title}</h5>
         <div className="inner-content">
@@ -122,22 +118,21 @@ export const IncomeItem: FC<IncomeItemProps> = ({
               $color={"#fff"}
               $iColor={"#fff"}
               $hColor={"var(--color-green)"}
-              onClick={() => {
-                deleteItem(id);
-              }}
+              onClick={handleDelete}
             />
           </div>
         </div>
       </div>
-    </IncomeItemStyled>
+    </TransactionItemStyled>
   );
 };
 
-interface IncomeItemStyledProps {
+interface TransactionItemStyledProps {
   $indicator: string;
 }
 
-const IncomeItemStyled = styled.div<IncomeItemStyledProps>`
+const TransactionItemStyled = styled.div<TransactionItemStyledProps>`
+  margin-top: 20px;
   background: #fcf6f9;
   border: 2px solid #ffffff;
   box-shadow: 0 1px 15px rgba(0, 0, 0, 0.06);

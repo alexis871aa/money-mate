@@ -4,7 +4,8 @@ import styled from "styled-components";
 interface ButtonProps {
   name?: string;
   icon: ReactNode;
-  onClick: () => void;
+  disabled?: boolean;
+  onClick?: () => void;
   $bg?: string;
   $bPad?: string;
   $color?: string;

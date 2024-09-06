@@ -14,11 +14,12 @@ async function sendActivationMail(to, link) {
   await transporter.sendMail({
     from: process.env.SMTP_USER,
     to,
-    subject: "Активация аккаунта на " + process.env.API_URL,
+    subject:
+      "Активация аккаунта веб-приложения Money Mate: " + process.env.CLIENT_URL,
     text: "",
     html: `
         <div>
-          <h1>Для активации перейдите по ссылке</h1>
+          <h1>Для активации аккаунта перейдите по ссылке</h1>
           <a href="${link}">${link}</a>
         </div>
         `,
@@ -29,7 +30,9 @@ async function sendPasswordResetMail(to, link) {
   await transporter.sendMail({
     from: process.env.SMTP_USER,
     to,
-    subject: "Восстановление пароля на " + process.env.API_URL,
+    subject:
+      "Восстановление пароля для входа в веб-приложение Money Mate: " +
+      process.env.CLIENT_URL,
     text: "",
     html: `
         <div>

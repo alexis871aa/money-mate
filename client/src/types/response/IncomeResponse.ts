@@ -1,8 +1,18 @@
+import { Income } from "../income";
+
+export interface SingleIncomeResponse {
+  status: string;
+  data: Income;
+  message: string;
+}
+
 export interface IncomeResponse {
-  id: string | undefined;
-  title: string;
-  amount: number;
-  category: string;
-  description: string;
-  date: Date;
+  status: string;
+  data: {
+    incomes: Income[];
+    totalCount: number;
+    currentPage: number;
+    totalPages: number;
+  };
+  message: string;
 }

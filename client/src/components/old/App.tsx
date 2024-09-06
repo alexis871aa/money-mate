@@ -4,7 +4,7 @@ import { useActions, useTypedSelector } from "../../hooks";
 import { IUser } from "../../types";
 import { UserService } from "../../services";
 
-export const App: FC = () => {
+export const Test: FC = () => {
   const { user, isAuth, isLoading } = useTypedSelector((state) => state.user);
   const { checkAuth, logout } = useActions();
   const [users, setUsers] = useState<IUser[]>([]);

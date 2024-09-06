@@ -10,6 +10,8 @@ export const settings = <i className="fa-solid fa-cog"></i>;
 
 export const logout = <i className="fa-solid fa-sign-out"></i>;
 
+export const key = <i className="fa-solid fa-key"></i>;
+
 export const trend = <i className="fa-solid fa-money-bill-trend-up"></i>;
 
 export const expenses = <i className="fa-solid fa-money-bill-transfer"></i>;
@@ -40,7 +42,11 @@ export const plus = <i className="fa-solid fa-plus"></i>;
 
 export const trash = <i className="fa-solid fa-trash"></i>;
 
+export const signin = <i className="fa-solid fa-door-open"></i>;
+
 export const signout = <i className="fa-solid fa-right-from-bracket"></i>;
+
+export const user = <i className="fa-solid fa-user-plus"></i>;
 
 export const takeaway = <i className="fa-solid fa-utensils"></i>;
 

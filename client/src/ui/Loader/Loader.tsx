@@ -2,9 +2,13 @@ import { FC, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const Loader: FC = () => {
+interface LoaderProps {
+  message?: string;
+}
+
+export const Loader: FC<LoaderProps> = ({ message = "Загрузка данных..." }) => {
   useEffect(() => {
-    const toastId = toast.info("Загрузка данных...", {
+    const toastId = toast.info(message, {
       autoClose: false,
     });
 
@@ -16,7 +20,7 @@ export const Loader: FC = () => {
   return (
     <div>
       <ToastContainer />
-      <h2>Идёт загрузка...</h2>
+      <h2>{message}</h2>
     </div>
   );
 };

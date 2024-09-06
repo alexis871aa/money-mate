@@ -1,46 +1,38 @@
-import { FC, useMemo } from "react";
+import { FC, useEffect, useMemo } from "react";
 import { MainLayout } from "./styles/Layouts";
-import {
-  Dashboard,
-  Expenses,
-  Income,
-  Navigation,
-  Orb,
-  Transactions,
-} from "./components";
+import { AppRoutes, Navigation, Orb } from "./components";
 import bg from "./assets/bg.png";
-import { useTypedSelector } from "./hooks";
-import { selectApp } from "./store/selectors";
+import { useActions, useTypedSelector } from "./hooks";
+import { selectUser } from "./store/selectors";
+import { StatusDisplay } from "./ui";
 import styled from "styled-components";
 
 export const App: FC = () => {
-  const { active } = useTypedSelector(selectApp);
-
-  const display = () => {
-    switch (active) {
-      case 1:
-        return <Dashboard />;
-      case 2:
-        return <Transactions />;
-      case 3:
-        return <Income />;
-      case 4:
-        return <Expenses />;
-      default:
-        return <Dashboard />;
-    }
-  };
+  const { checkAuth } = useActions();
+  const { isAuth, isLoading } = useTypedSelector(selectUser);
 
   const orbMemo = useMemo(() => {
     return <Orb />;
   }, []);
 
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      checkAuth();
+    }
+  }, [checkAuth]);
+
+  if (isLoading) {
+    return <StatusDisplay loading message="Идёт проверка авторизации..." />;
+  }
+
   return (
     <AppStyled $bg={bg}>
       {orbMemo}
       <MainLayout>
-        <div className="container">{display()}</div>
-        <Navigation />
+        <div className="container">
+          <AppRoutes />
+        </div>
+        {isAuth && <Navigation />}
       </MainLayout>
     </AppStyled>
   );
@@ -61,7 +53,6 @@ const AppStyled = styled.div<AppStyledProps>`
     border: 3px solid #fff;
     backdrop-filter: blur(4.5px);
     border-radius: 32px;
-    overflow: auto;
     overflow-x: hidden;
     &::-webkit-scrollbar {
       width: 0;

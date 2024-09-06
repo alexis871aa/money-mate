@@ -29,7 +29,7 @@ export const StatusDisplay: FC<StatusDisplayProps> = ({
 
   return (
     <StatusDisplayStyled>
-      {loading && <Loader />}
+      {loading && <Loader message={message} />}
       <ToastContainer />
     </StatusDisplayStyled>
   );

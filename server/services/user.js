@@ -69,7 +69,7 @@ async function activate(activationLink) {
 
   if (!user) {
     throw ApiError.BadRequest(
-      `Cсылка для активации ${activationLink} не найдена`,
+      `Cсылка для активации аккаунта ${activationLink} не найдена`,
     );
   }
 }

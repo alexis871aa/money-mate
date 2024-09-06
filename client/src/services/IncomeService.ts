@@ -1,24 +1,50 @@
 import { AxiosResponse } from "axios";
-import { IncomeResponse } from "../types/response";
-import { Income } from "../types";
+import { IncomeResponse, SingleIncomeResponse } from "../types/response";
+import { Income, NewIncome } from "../types";
 import { normalizeDate } from "../helpers";
 import $api from "../http";
 
 export const IncomeService = {
-  async getIncomes(): Promise<AxiosResponse<IncomeResponse[]>> {
-    return $api.get<IncomeResponse[]>("/incomes/");
+  async getIncomes(
+    page: number,
+    limit: number,
+    searchTerm: string,
+    sortBy: "title" | "amount" | "date",
+    sortOrder: "asc" | "desc",
+  ): Promise<IncomeResponse> {
+    const response = await $api.get<IncomeResponse>(
+      `/incomes?page=${page}&limit=${limit}&search=${searchTerm}&sortBy=${sortBy}&sortOrder=${sortOrder}`,
+    );
+    return response.data;
   },
 
-  async addIncome(income: Income): Promise<AxiosResponse<IncomeResponse>> {
+  async addIncome(
+    income: NewIncome,
+  ): Promise<AxiosResponse<SingleIncomeResponse>> {
     const normalizedIncome = {
       ...income,
       date: normalizeDate(income.date),
     };
-
-    return $api.post<IncomeResponse>("/incomes/add-income", normalizedIncome);
+    return $api.post<SingleIncomeResponse>(
+      "/incomes/add-income",
+      normalizedIncome,
+    );
   },
 
-  async deleteIncome(id: string | undefined): Promise<AxiosResponse<void>> {
+  async updateIncome(
+    income: Income,
+  ): Promise<AxiosResponse<SingleIncomeResponse>> {
+    const normalizedIncome = {
+      ...income,
+      date: normalizeDate(income.date),
+    };
+    return $api.put<SingleIncomeResponse>(
+      `/incomes/update-income/${income.id}`,
+      normalizedIncome,
+    );
+  },
+
+  async deleteIncome(id: string): Promise<AxiosResponse<void>> {
     return $api.delete(`/incomes/delete-income/${id}`);
   },
 };

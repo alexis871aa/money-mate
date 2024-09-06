@@ -1,15 +1,19 @@
 const ApiError = require("../exceptions/apiError");
 
 module.exports = function (err, req, res, next) {
-  console.log(err);
-
   if (err instanceof ApiError) {
-    return res
-      .status(err.status)
-      .send({ message: err.message, errors: err.errors });
+    return res.status(err.status).send({
+      status: "error",
+      message: err.message,
+      details: err.errors || null,
+    });
   }
 
-  return res
-    .status(500)
-    .send({ message: `Произошла непредвиденная ошибка ${err.message}` });
+  console.error(err);
+
+  return res.status(500).send({
+    status: "error",
+    message: "Внутренняя ошибка сервера",
+    details: err.message,
+  });
 };

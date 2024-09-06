@@ -2,11 +2,11 @@ const { Schema, model } = require("mongoose");
 
 const IncomeSchema = new Schema(
   {
-    // user: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "User",
-    //   required: true,
-    // },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     title: {
       type: String,
       required: true,
@@ -42,5 +42,9 @@ const IncomeSchema = new Schema(
   },
   { timestamps: true },
 );
+
+IncomeSchema.index({ title: "text", category: "text", description: "text" });
+IncomeSchema.index({ date: 1 });
+IncomeSchema.index({ amount: 1 });
 
 module.exports = model("Income", IncomeSchema);

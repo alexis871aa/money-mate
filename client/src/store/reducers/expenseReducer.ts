@@ -4,6 +4,9 @@ export const initialState: ExpenseState = {
   expenses: [],
   loading: false,
   error: null,
+  totalCount: 0,
+  currentPage: 1,
+  totalPages: 1,
 };
 
 export const expenseReducer = (
@@ -34,11 +37,15 @@ export const expenseReducer = (
       };
     }
     case ExpenseActionTypes.FETCH_EXPENSES_SUCCESS: {
+      const { expenses, totalCount, currentPage, totalPages } = action.payload;
       return {
         ...state,
         loading: false,
         error: null,
-        expenses: action.payload,
+        expenses,
+        totalCount,
+        currentPage,
+        totalPages,
       };
     }
     case ExpenseActionTypes.FETCH_EXPENSES_ERROR: {

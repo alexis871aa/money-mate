@@ -1,9 +1,13 @@
-export * from "./Dashboard/Dashboard";
-export * from "./Transactions/Transactions";
-export * from "./Income/Income";
-export * from "./Expenses/Expenses";
+export * from "./AppRoutes/AppRoutes";
+export * from "./PrivateRoute/PrivateRoute";
+export * from "./PublicRoute/PublicRoute";
 
-export * from "./Form/Form";
+export * from "./IncomeForm/IncomeForm";
+export * from "./ExpenseForm/ExpenseForm";
+export * from "./TransactionItem/TransactionItem";
+export * from "./Chart/Chart";
+export * from "./History/History";
+export * from "./Pagination/Pagination";
 
 export * from "./AuthForm/AuthForm";
 export * from "./IncomeList/IncomeList";

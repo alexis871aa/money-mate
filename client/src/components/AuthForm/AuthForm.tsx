@@ -1,13 +1,13 @@
 import { FC, ChangeEvent, useState } from "react";
 import { useActions, useTypedSelector } from "../../hooks";
 
-interface IUserData {
+interface UserData {
   email: string;
   password: string;
 }
 
 export const AuthForm: FC = () => {
-  const [userData, setUserData] = useState<IUserData>({
+  const [userData, setUserData] = useState<UserData>({
     email: "",
     password: "",
   });
@@ -16,7 +16,7 @@ export const AuthForm: FC = () => {
   const { login, registration } = useActions();
 
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setUserData((prevState: IUserData) => {
+    setUserData((prevState: UserData) => {
       return {
         ...prevState,
         [target.name]: target.value,

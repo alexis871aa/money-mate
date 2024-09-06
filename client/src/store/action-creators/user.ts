@@ -14,6 +14,7 @@ export const registration = (email: string, password: string) => {
       dispatch({ type: UserActionTypes.SET_USER, payload: response.data.user });
     } catch (e: any) {
       console.log(e.response?.data?.message);
+      throw new Error(e.response?.data?.message);
     }
   };
 };
@@ -27,6 +28,7 @@ export const login = (email: string, password: string) => {
       dispatch({ type: UserActionTypes.SET_USER, payload: response.data.user });
     } catch (e: any) {
       console.log(e.response?.data?.message);
+      throw new Error(e.response?.data?.message);
     }
   };
 };
@@ -40,6 +42,9 @@ export const logout = () => {
       dispatch({ type: UserActionTypes.SET_USER, payload: {} as IUser });
     } catch (e: any) {
       console.log(e.response?.data?.message);
+      throw new Error(e.response?.data?.message);
+    } finally {
+      dispatch({ type: UserActionTypes.SET_LOADING, payload: false });
     }
   };
 };
@@ -60,8 +65,31 @@ export const checkAuth = () => {
       dispatch({ type: UserActionTypes.SET_USER, payload: response.data.user });
     } catch (e: any) {
       console.log(e.response?.data?.message);
+      throw new Error(e.response?.data?.message);
     } finally {
       dispatch({ type: UserActionTypes.SET_LOADING, payload: false });
+    }
+  };
+};
+
+export const requestResetPassword = (email: string) => {
+  return async (dispatch: Dispatch<UserAction>) => {
+    try {
+      await AuthService.requestResetPassword(email);
+    } catch (e: any) {
+      console.log(e.response?.data?.message);
+      throw new Error(e.response?.data?.message);
+    }
+  };
+};
+
+export const resetPassword = (resetToken: string, newPassword: string) => {
+  return async (dispatch: Dispatch<UserAction>) => {
+    try {
+      await AuthService.resetPassword(resetToken, newPassword);
+    } catch (e: any) {
+      console.log(e.response?.data?.message);
+      throw new Error(e.response?.data?.message);
     }
   };
 };

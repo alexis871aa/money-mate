@@ -1,20 +1,28 @@
-export interface Expense {
-  id: string;
+export interface NewExpense {
   title: string;
   amount: number;
+  type?: string;
   category: string;
   description: string;
-  date: Date;
+  date: Date | null;
+}
+
+export interface Expense extends NewExpense {
+  id: string;
 }
 
 export interface ExpenseState {
   expenses: Expense[];
   loading: boolean;
   error: null | string;
+  totalCount: number;
+  currentPage: number;
+  totalPages: number;
 }
 
 export enum ExpenseActionTypes {
   ADD_EXPENSE = "ADD_EXPENSE",
+  UPDATE_EXPENSE = "UPDATE_EXPENSE",
   DELETE_EXPENSE = "DELETE_EXPENSE",
   FETCH_EXPENSES = "FETCH_EXPENSES",
   FETCH_EXPENSES_SUCCESS = "FETCH_EXPENSES_SUCCESS",
@@ -23,6 +31,11 @@ export enum ExpenseActionTypes {
 
 interface AddExpenseAction {
   type: ExpenseActionTypes.ADD_EXPENSE;
+  payload: Expense;
+}
+
+interface UpdateExpenseAction {
+  type: ExpenseActionTypes.UPDATE_EXPENSE;
   payload: Expense;
 }
 
@@ -37,7 +50,12 @@ interface FetchExpensesAction {
 
 interface FetchExpensesSuccessAction {
   type: ExpenseActionTypes.FETCH_EXPENSES_SUCCESS;
-  payload: Expense[];
+  payload: {
+    expenses: Expense[];
+    totalCount: number;
+    currentPage: number;
+    totalPages: number;
+  };
 }
 
 interface FetchExpensesErrorAction {
@@ -47,6 +65,7 @@ interface FetchExpensesErrorAction {
 
 export type ExpenseAction =
   | AddExpenseAction
+  | UpdateExpenseAction
   | DeleteExpenseAction
   | FetchExpensesAction
   | FetchExpensesSuccessAction
