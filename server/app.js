@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const router = require("./router");
 const errorMiddleware = require("./middlewares/error");
 
-// const cors = require("cors");
+const cors = require("cors");
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -16,12 +16,12 @@ app.use(express.static(path.resolve("..", "client", "build")));
 
 app.use(express.json());
 app.use(cookieParser());
-// const corsOptions = {
-//   origin: process.env.CLIENT_URL,
-//   credentials: true,
-//   optionSuccessStatus: 200,
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 app.use("/api/v1", router);
 app.use(errorMiddleware);
