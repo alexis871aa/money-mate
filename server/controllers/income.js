@@ -50,6 +50,27 @@ async function getIncomes(req, res, next) {
   }
 }
 
+async function getIncomeById(req, res, next) {
+  try {
+    const { id } = req.params;
+    const userId = req.user.id;
+
+    const income = await incomeService.getIncomeById(id, userId);
+
+    if (!income) {
+      return next(ApiError.BadRequest("Доход не найден"));
+    }
+
+    res.status(200).send({
+      status: "success",
+      data: income,
+      message: "Доход успешно получен",
+    });
+  } catch (e) {
+    next(e);
+  }
+}
+
 async function addIncome(req, res, next) {
   try {
     const errors = validationResult(req);
@@ -137,6 +158,7 @@ async function deleteIncome(req, res, next) {
 
 module.exports = {
   getIncomes,
+  getIncomeById,
   addIncome,
   updateIncome,
   deleteIncome,

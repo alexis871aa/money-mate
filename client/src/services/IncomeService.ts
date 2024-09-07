@@ -18,6 +18,11 @@ export const IncomeService = {
     return response.data;
   },
 
+  async getIncomeById(id: string): Promise<SingleIncomeResponse> {
+    const response = await $api.get<SingleIncomeResponse>(`/incomes/${id}`);
+    return response.data;
+  },
+
   async addIncome(
     income: NewIncome,
   ): Promise<AxiosResponse<SingleIncomeResponse>> {

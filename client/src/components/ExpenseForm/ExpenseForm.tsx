@@ -53,6 +53,7 @@ export const ExpenseForm: FC = () => {
     register,
     handleSubmit,
     setValue,
+    reset,
     watch,
     clearErrors,
     formState: { errors },
@@ -66,6 +67,7 @@ export const ExpenseForm: FC = () => {
   const onSubmit = async (data: ExpenseFormData) => {
     try {
       await addExpense(data);
+      reset();
     } catch (error: any) {
       setServerError(
         error.message || "Произошла ошибка при добавлении расхода.",
@@ -155,11 +157,11 @@ export const ExpenseForm: FC = () => {
 };
 
 const FormStyled = styled.form`
-  margin-top: 20px;
+  margin-top: 12px;
   display: flex;
-  width: 400px;
+  width: 350px;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 
   input,
   textarea,
@@ -172,8 +174,9 @@ const FormStyled = styled.form`
     border: 2px solid #fff;
     background: transparent;
     resize: none;
-    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.06);
     color: rgba(34, 34, 96, 0.9);
+
     &::placeholder {
       color: rgba(34, 34, 96, 0.4);
     }
@@ -186,7 +189,7 @@ const FormStyled = styled.form`
   }
 
   p {
-    color: red;
+    color: var(--color-red);
     font-size: 0.8rem;
     margin-top: 0.25rem;
     min-height: 1.2rem;
@@ -207,6 +210,7 @@ const FormStyled = styled.form`
 
   .submit-btn {
     button {
+      font-size: 0.8rem;
       box-shadow: 0 1px 15px rgba(0, 0, 0, 0.06);
       &:hover {
         background: var(--color-green) !important;

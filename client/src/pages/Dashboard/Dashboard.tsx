@@ -123,30 +123,47 @@ const DashboardStyled = styled.div`
   .stats-con {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
+    gap: 1.3rem;
+
     .chart-con {
       grid-column: 1 / 4;
-      height: 400px;
+      height: 340px;
+
       .amount-con {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-        margin-top: 2rem;
+        gap: 1rem;
+        margin-top: 1.5rem;
+
         .income,
         .expense {
           grid-column: span 2;
         }
+
         .income,
         .expense,
         .balance {
           background: #fcf6f9;
-          border: 2px solid #ffffff;
-          box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+          border: 1px solid #ffffff;
+          box-shadow: 0 1px 15px rgba(0, 0, 0, 0.06);
           border-radius: 20px;
           padding: 1rem;
+
           p {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 500;
+          }
+        }
+
+        .income {
+          p {
+            color: var(--color-green);
+          }
+        }
+
+        .expense {
+          p {
+            color: var(--color-red);
           }
         }
 
@@ -156,10 +173,11 @@ const DashboardStyled = styled.div`
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          font-size: 1.5rem;
+
           p {
             color: var(--color-green);
-            opacity: 0.6;
-            font-size: 4.5rem;
+            font-size: 1.3rem;
           }
         }
       }
@@ -167,18 +185,22 @@ const DashboardStyled = styled.div`
 
     .history-con {
       grid-column: 4 / -1;
+
       h2 {
         margin: 1rem 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
       }
+
       .salary-title {
         font-size: 1.2rem;
+
         span {
           font-size: 1.8rem;
         }
       }
+
       .salary-item {
         background: #fcf6f9;
         border: 2px solid #ffffff;
@@ -188,6 +210,7 @@ const DashboardStyled = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         p {
           font-weight: 600;
           font-size: 1.6rem;

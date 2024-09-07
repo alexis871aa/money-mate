@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
   origin: process.env.CLIENT_URL,
-  credentials: true, //access-control-allow-credentials:true
+  credentials: true,
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));

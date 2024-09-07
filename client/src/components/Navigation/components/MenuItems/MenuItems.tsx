@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
 import { dashboard, expenses, transactions, trend } from "../../../../ui";
+import styled from "styled-components";
 
 interface MenuItem {
   id: number;
@@ -66,7 +66,7 @@ const MenuItemsStyled = styled.ul`
       justify-content: flex-start;
 
       span {
-        font-size: 1.2em;
+        font-size: 1em;
       }
     }
 

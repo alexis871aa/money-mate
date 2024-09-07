@@ -1,5 +1,9 @@
 import { AxiosResponse } from "axios";
-import { ExpenseResponse, SingleExpenseResponse } from "../types/response";
+import {
+  ExpenseResponse,
+  SingleExpenseResponse,
+  SingleIncomeResponse,
+} from "../types/response";
 import { Expense, NewExpense } from "../types";
 import { normalizeDate } from "../helpers";
 import $api from "../http";
@@ -15,6 +19,11 @@ export const ExpenseService = {
     const response = await $api.get<ExpenseResponse>(
       `/expenses?page=${page}&limit=${limit}&search=${searchTerm}&sortBy=${sortBy}&sortOrder=${sortOrder}`,
     );
+    return response.data;
+  },
+
+  async getExpenseById(id: string): Promise<SingleExpenseResponse> {
+    const response = await $api.get<SingleExpenseResponse>(`/expenses/${id}`);
     return response.data;
   },
 

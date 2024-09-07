@@ -8,6 +8,10 @@ export const accounts = <i className="fa-solid fa-wallet"></i>;
 
 export const settings = <i className="fa-solid fa-cog"></i>;
 
+export const ok = <i className="fa-solid fa-check"></i>;
+
+export const cancel = <i className="fa-solid fa-ban"></i>;
+
 export const logout = <i className="fa-solid fa-sign-out"></i>;
 
 export const key = <i className="fa-solid fa-key"></i>;

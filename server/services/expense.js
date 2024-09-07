@@ -20,6 +20,16 @@ async function getExpenses({ page, limit, sortBy, sortOrder, query }) {
   };
 }
 
+async function getExpenseById(id, userId) {
+  const expense = await Expense.findOne({ _id: id, user: userId });
+
+  if (!expense) {
+    throw new Error("Расход не найден");
+  }
+
+  return mapExpense(expense);
+}
+
 async function addExpense(expense) {
   const expenseDb = await Expense.create(expense);
   return mapExpense(expenseDb);
@@ -39,6 +49,7 @@ async function deleteExpense(id) {
 
 module.exports = {
   getExpenses,
+  getExpenseById,
   addExpense,
   updateExpense,
   deleteExpense,

@@ -5,6 +5,8 @@ const { body } = require("express-validator");
 const router = new Router({ mergeParams: true });
 
 router.get("/", authMiddleware, incomeController.getIncomes);
+router.get("/:id", authMiddleware, incomeController.getIncomeById);
+
 router.post(
   "/add-income",
   body("title")
@@ -24,6 +26,7 @@ router.post(
   authMiddleware,
   incomeController.addIncome,
 );
+
 router.put(
   "/update-income/:id",
   body("title")
@@ -43,6 +46,7 @@ router.put(
   authMiddleware,
   incomeController.updateIncome,
 );
+
 router.delete(
   "/delete-income/:id",
   authMiddleware,

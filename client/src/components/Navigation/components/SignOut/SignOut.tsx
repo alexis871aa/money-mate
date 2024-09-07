@@ -32,7 +32,7 @@ const SignOutStyled = styled.div`
 
     span {
       margin-left: 1rem;
-      font-size: 1.2em;
+      font-size: 1em;
     }
   }
 `;

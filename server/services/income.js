@@ -20,6 +20,16 @@ async function getIncomes({ page, limit, sortBy, sortOrder, query }) {
   };
 }
 
+async function getIncomeById(id, userId) {
+  const income = await Income.findOne({ _id: id, user: userId });
+
+  if (!income) {
+    throw new Error("Доход не найден");
+  }
+
+  return mapIncome(income);
+}
+
 async function addIncome(income) {
   try {
     const incomeDb = await Income.create(income);
@@ -43,6 +53,7 @@ async function deleteIncome(id) {
 
 module.exports = {
   getIncomes,
+  getIncomeById,
   addIncome,
   updateIncome,
   deleteIncome,

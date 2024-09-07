@@ -1,9 +1,9 @@
 import { FC } from "react";
 import avatar from "../../../../assets/avatar.png";
-import styled from "styled-components";
 import { useTypedSelector } from "../../../../hooks";
 import { selectUser } from "../../../../store/selectors";
 import { getUsername } from "../../../../helpers";
+import styled from "styled-components";
 
 export const MenuUser: FC = () => {
   const { user } = useTypedSelector(selectUser);
@@ -34,7 +34,8 @@ const MenuUserStyled = styled.div`
     height: 100px;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
+
     img {
       width: 80px;
       height: 80px;
@@ -46,6 +47,7 @@ const MenuUserStyled = styled.div`
       box-shadow: 0 1px 17px rgba(0, 0, 0, 0.06);
     }
     h2 {
+      font-size: 1rem;
       color: rgba(34, 34, 96, 1);
     }
     p {
@@ -59,7 +61,7 @@ interface IndicatorProps {
 }
 
 const IndicatorStyled = styled.h5<IndicatorProps>`
-  font-size: 1rem;
+  font-size: 0.8rem;
   padding-left: 1rem;
   position: relative;
 

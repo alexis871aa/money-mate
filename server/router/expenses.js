@@ -5,6 +5,8 @@ const { body } = require("express-validator");
 const router = new Router({ mergeParams: true });
 
 router.get("/", authMiddleware, expenseController.getExpenses);
+router.get("/:id", authMiddleware, expenseController.getExpenseById);
+
 router.post(
   "/add-expense",
   body("title")
@@ -24,6 +26,7 @@ router.post(
   authMiddleware,
   expenseController.addExpense,
 );
+
 router.put(
   "/update-expense/:id",
   body("title")
@@ -43,6 +46,7 @@ router.put(
   authMiddleware,
   expenseController.updateExpense,
 );
+
 router.delete(
   "/delete-expense/:id",
   authMiddleware,

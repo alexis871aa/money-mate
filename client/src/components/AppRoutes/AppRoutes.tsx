@@ -8,6 +8,8 @@ import {
   Dashboard,
   Income,
   Expense,
+  IncomeEditPage,
+  ExpenseEditPage,
 } from "../../pages";
 import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
 import { PublicRoute } from "../PublicRoute/PublicRoute";
@@ -28,10 +30,21 @@ export const AppRoutes: FC = () => {
         path="/reset-password/:resetToken"
         element={<PublicRoute component={ResetPasswordPage} />}
       />
-
       <Route path="/" element={<PrivateRoute component={Dashboard} />} />
       <Route path="/incomes" element={<PrivateRoute component={Income} />} />
+      <Route
+        path="/incomes/edit/:id"
+        element={<PrivateRoute component={IncomeEditPage} />}
+      />{" "}
+      <Route
+        path="/incomes/edit/:id"
+        element={<PrivateRoute component={IncomeEditPage} />}
+      />
       <Route path="/expenses" element={<PrivateRoute component={Expense} />} />
+      <Route
+        path="/expenses/edit/:id"
+        element={<PrivateRoute component={ExpenseEditPage} />}
+      />
     </Routes>
   );
 };

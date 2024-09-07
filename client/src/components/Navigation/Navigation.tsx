@@ -14,7 +14,7 @@ export const Navigation: FC = () => {
 
 const NavigationStyled = styled.nav`
   padding: 2rem 1.5rem;
-  width: 374px;
+  width: 270px;
   height: 100%;
   background: rgba(252, 246, 249, 0.78);
   border: 3px solid #ffffff;

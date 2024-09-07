@@ -22,7 +22,9 @@ import {
   tv,
   users,
   yt,
+  settings,
 } from "../../ui";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 interface TransactionItemProps {
@@ -49,6 +51,7 @@ export const TransactionItem: FC<TransactionItemProps> = ({
   $indicatorColor,
 }) => {
   const [showStatus, setShowStatus] = useState(false);
+  const navigate = useNavigate();
 
   const getCategoryIcon = () => {
     const icons: Record<string, ReactNode> = {
@@ -79,7 +82,12 @@ export const TransactionItem: FC<TransactionItemProps> = ({
     setTimeout(() => setShowStatus(false), 3000);
   };
 
-  const indicatorColor = type === "expense" ? "red" : $indicatorColor;
+  const handleEdit = () => {
+    navigate(`/incomes/edit/${id}`);
+  };
+
+  const indicatorColor =
+    type === "expense" ? "var(--color-red)" : $indicatorColor;
 
   return (
     <TransactionItemStyled $indicator={indicatorColor}>
@@ -120,6 +128,16 @@ export const TransactionItem: FC<TransactionItemProps> = ({
               $hColor={"var(--color-green)"}
               onClick={handleDelete}
             />
+            <Button
+              icon={settings}
+              $bPad={"1rem"}
+              $bRad={"50%"}
+              $bg={"var(--primary-color)"}
+              $color={"#fff"}
+              $iColor={"#fff"}
+              $hColor={"var(--color-green)"}
+              onClick={handleEdit}
+            />
           </div>
         </div>
       </div>
@@ -132,12 +150,12 @@ interface TransactionItemStyledProps {
 }
 
 const TransactionItemStyled = styled.div<TransactionItemStyledProps>`
-  margin-top: 20px;
+  margin-top: 12px;
   background: #fcf6f9;
   border: 2px solid #ffffff;
   box-shadow: 0 1px 15px rgba(0, 0, 0, 0.06);
   border-radius: 20px;
-  padding: 1rem;
+  padding: 0.8rem;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -146,8 +164,8 @@ const TransactionItemStyled = styled.div<TransactionItemStyledProps>`
   color: #222260;
 
   .icon {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     border-radius: 20px;
     background: #f5f5f5;
     display: flex;
@@ -156,7 +174,7 @@ const TransactionItemStyled = styled.div<TransactionItemStyledProps>`
     border: 2px solid #ffffff;
 
     i {
-      font-size: 2.6rem;
+      font-size: 1.2rem;
     }
   }
 
@@ -164,11 +182,10 @@ const TransactionItemStyled = styled.div<TransactionItemStyledProps>`
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
 
     h5 {
-      font-size: 1.3rem;
-      padding-left: 2rem;
+      font-size: 1rem;
+      padding-left: 1.5rem;
       position: relative;
 
       &::before {
@@ -177,8 +194,8 @@ const TransactionItemStyled = styled.div<TransactionItemStyledProps>`
         left: 0;
         top: 50%;
         transform: translateY(-50%);
-        width: 0.8rem;
-        height: 0.8rem;
+        width: 0.6rem;
+        height: 0.6rem;
         border-radius: 50%;
         background: ${({ $indicator }) => $indicator};
       }
@@ -192,15 +209,27 @@ const TransactionItemStyled = styled.div<TransactionItemStyledProps>`
       .text {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
+        gap: 0.8rem;
 
         p {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
+          gap: 0.4rem;
           color: var(--primary-color);
           opacity: 0.8;
+          font-size: 0.9rem;
         }
+      }
+
+      .btn-con button {
+        display: flex;
+        justify-content: center;
+        padding: 0.4rem;
+        margin: 0.1rem;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
       }
     }
   }

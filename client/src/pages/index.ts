@@ -4,4 +4,6 @@ export * from "./RequestPasswordResetPage/RequestPasswordResetPage";
 export * from "./ResetPasswordPage/ResetPasswordPage";
 export * from "./Dashboard/Dashboard";
 export * from "./Income/Income";
+export * from "./IncomeEditPage/IncomeEditPage";
 export * from "./Expense/Expense";
+export * from "./ExpenseEditPage/ExpenseEditPage";

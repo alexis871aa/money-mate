@@ -50,6 +50,27 @@ async function getExpenses(req, res, next) {
   }
 }
 
+async function getExpenseById(req, res, next) {
+  try {
+    const { id } = req.params;
+    const userId = req.user.id;
+
+    const expense = await expenseService.getExpenseById(id, userId);
+
+    if (!expense) {
+      return next(ApiError.BadRequest("Расход не найден"));
+    }
+
+    res.status(200).send({
+      status: "success",
+      data: expense,
+      message: "Расход успешно получен",
+    });
+  } catch (e) {
+    next(e);
+  }
+}
+
 async function addExpense(req, res, next) {
   try {
     const errors = validationResult(req);
@@ -137,6 +158,7 @@ async function deleteExpense(req, res, next) {
 
 module.exports = {
   getExpenses,
+  getExpenseById,
   addExpense,
   updateExpense,
   deleteExpense,

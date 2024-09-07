@@ -12,9 +12,11 @@ router.post(
 );
 router.post("/login", userController.login);
 router.post("/logout", userController.logout);
+
 router.get("/activate/:link", userController.activate);
 router.get("/refresh", userController.refresh);
 router.get("/", authMiddleware, userController.getUsers);
+
 router.post(
   "/request-password-reset",
   body("email").isEmail(),
