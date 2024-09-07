@@ -1,4 +1,4 @@
-const Expense = require("../models/Expense");
+const Expense = require("../models/expense");
 const expenseService = require("../services/expense");
 const { validationResult } = require("express-validator");
 const ApiError = require("../exceptions/apiError");

@@ -1,4 +1,4 @@
-const Income = require("../models/Income");
+const Income = require("../models/income");
 const mapIncome = require("../helpers/mapIncome");
 
 async function getIncomes({ page, limit, sortBy, sortOrder, query }) {

@@ -1,4 +1,4 @@
-const Income = require("../models/Income");
+const Income = require("../models/income");
 const incomeService = require("../services/income");
 const { validationResult } = require("express-validator");
 const ApiError = require("../exceptions/apiError");

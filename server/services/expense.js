@@ -1,4 +1,4 @@
-const Expense = require("../models/Expense");
+const Expense = require("../models/expense");
 const mapExpense = require("../helpers/mapExpense");
 
 async function getExpenses({ page, limit, sortBy, sortOrder, query }) {
