@@ -83,7 +83,11 @@ export const TransactionItem: FC<TransactionItemProps> = ({
   };
 
   const handleEdit = () => {
-    navigate(`/incomes/edit/${id}`);
+    if (type === "income") {
+      navigate(`/incomes/edit/${id}`);
+    } else {
+      navigate(`/expenses/edit/${id}`);
+    }
   };
 
   const indicatorColor =

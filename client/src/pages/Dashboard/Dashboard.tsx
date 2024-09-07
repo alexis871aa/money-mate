@@ -176,7 +176,7 @@ const DashboardStyled = styled.div`
           font-size: 1.5rem;
 
           p {
-            color: var(--color-green);
+            color: var(--color-blue);
             font-size: 1.3rem;
           }
         }

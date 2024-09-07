@@ -1,9 +1,5 @@
 import { AxiosResponse } from "axios";
-import {
-  ExpenseResponse,
-  SingleExpenseResponse,
-  SingleIncomeResponse,
-} from "../types/response";
+import { ExpenseResponse, SingleExpenseResponse } from "../types/response";
 import { Expense, NewExpense } from "../types";
 import { normalizeDate } from "../helpers";
 import $api from "../http";

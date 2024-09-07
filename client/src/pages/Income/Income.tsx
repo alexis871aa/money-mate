@@ -18,7 +18,7 @@ export const Income: FC = () => {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
   const [sortBy, setSortBy] = useState<"title" | "amount" | "date">("date");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
-  const itemsPerPage = 10;
+  const itemsPerPage = 4;
 
   useEffect(() => {
     const handler = debounce(() => {

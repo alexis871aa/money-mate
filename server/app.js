@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
@@ -11,7 +12,7 @@ const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 const app = express();
 
-// app.use(express.static(path.resolve('..', 'frontend', 'build')));
+app.use(express.static(path.resolve("..", "client", "build")));
 
 app.use(express.json());
 app.use(cookieParser());
@@ -25,9 +26,9 @@ app.use(cors(corsOptions));
 app.use("/api/v1", router);
 app.use(errorMiddleware);
 
-// app.get('*', (req, res) => {
-// 	res.sendFile(path.resolve('..', 'frontend', 'build', 'index.html'));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve("..", "client", "build", "index.html"));
+});
 
 mongoose
   .connect(process.env.DB_CONNECTION_STRING)

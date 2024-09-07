@@ -93,6 +93,10 @@ export const Chart: FC = () => {
               size: 14,
             },
           },
+          ticks: {
+            autoSkip: true,
+            maxTicksLimit: 10,
+          },
         },
         y: {
           title: {
