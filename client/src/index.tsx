@@ -15,3 +15,4 @@ root.render(
     <AppWithEnhancements />
   </>,
 );
+export { API_URL } from "./constants/API_URL";

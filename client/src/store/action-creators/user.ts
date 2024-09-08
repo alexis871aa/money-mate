@@ -1,9 +1,9 @@
 import { IUser, UserAction, UserActionTypes } from "../../types";
 import { Dispatch } from "redux";
 import { AuthService } from "../../services";
-import { API_URL } from "../../http";
 import { AuthResponse } from "../../types/response";
 import axios from "axios";
+import { API_URL } from "../../constants/API_URL";
 
 export const registration = (email: string, password: string) => {
   return async (dispatch: Dispatch<UserAction>) => {

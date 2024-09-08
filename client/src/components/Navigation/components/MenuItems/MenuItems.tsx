@@ -12,7 +12,7 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   { id: 1, title: "Статистика", icon: dashboard, link: "/" },
-  { id: 2, title: "Операции", icon: transactions, link: "/transactions" },
+  // { id: 2, title: "Операции", icon: transactions, link: "/operations" },
   { id: 3, title: "Доходы", icon: trend, link: "/incomes" },
   { id: 4, title: "Расходы", icon: expenses, link: "/expenses" },
 ];

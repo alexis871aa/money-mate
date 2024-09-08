@@ -10,6 +10,7 @@ import {
   Legend,
   ArcElement,
   TooltipItem,
+  Filler,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import moment from "moment";
@@ -26,6 +27,7 @@ ChartJs.register(
   Tooltip,
   Legend,
   ArcElement,
+  Filler,
 );
 
 export const Chart: FC = () => {
